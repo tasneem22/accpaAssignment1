@@ -1,0 +1,26 @@
+comment "//" ;
+comment "/*" "*/" ;
+
+
+separator Expr "," ;
+
+If.           		Expr ::= "if" Expr "then" Expr "else" Expr ;
+Print.			    Expr  ::= "print" Expr ";" Expr;
+
+Assignment. 		Expr  ::= "=" Expr ";" Expr;
+Abstraction.   		Expr ::= "function" "=>" "{" Expr "}" ;
+LazyAbstraction.	Expr ::= "macro" "=>" "{" Expr "}" ; 
+
+Application.  		Expr ::= "apply" Expr "(" [Expr] ")";
+
+Succ.        		Expr ::= "succ" Expr ;
+Pred.         		Expr ::= "pred" Expr ;
+IsZero.       		Expr ::= "iszero" Expr ;
+
+ConstTrue.   		Expr ::= "true" ;
+ConstFalse.   		Expr ::= "false" ;
+ConstInteger.    	Expr ::= Integer ;
+FreeVar.     		Expr ::= Ident ;
+BoundVar.   		Expr ::= Integer ;
+
+_. 			Expr  ::= "(" Expr ")" ;
